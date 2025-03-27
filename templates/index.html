@@ -4,61 +4,117 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scene Weaver - Collaborative Script Writing</title>
+    <title>Chatify</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 
 <body>
+    <div class="video-container">
+        <video autoplay muted loop>
+            <source src="{{ url_for('static', filename='videoplayback.webm') }}" type="video/mp4">
+        </video>
+    </div>
     <header>
-        <h1 onclick="showLoadingSpinner(); setTimeout(function() { location.reload(); }, 100);">Scene Weaver</h1>
-        <nav>
-            <!-- Button styled as a Squarespace icon -->
-            <a href="{{ url_for('view_rooms') }}" onclick="showLoadingSpinner()">
-                <button class="icon-btn">
-                    <i class="fa-brands fa-squarespace fa-lg"></i>
-                </button>
-            </a>
-        </nav>
+        <h1 onclick="showLoadingSpinner(); setTimeout(function() { location.reload(); }, 100);"
+            style="display: flex; align-items: center; gap: 8px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-8 w-8"
+                style="color: var(--yellow);">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            </svg>
+            Chatify
+        </h1>
     </header>
     <!-- Genre Selection -->
     <section id="genre-selection">
-        <h2>Select Your Genre to Start Collaboration</h2>
+        <h2 style="text-align: center;">Stay Connected with Chatify</h2>
+        <h3 style="color: white; margin: 0 auto;">
+            Private . Seamless . Always Connected
+        </h3>
+
         <form action="{{ url_for('create_room') }}" method="POST">
             <select name="genre" required>
                 {% for genre in genres %}
                 <option value="{{ genre }}">{{ genre }}</option>
                 {% endfor %}
             </select>
-            <button type="submit" onclick="showLoadingSpinner()">Create Room</button>
+            <button type="submit" onclick="showLoadingSpinner()">Get Started</button>
         </form>
     </section>
-
-    <!-- Search & Browse Section -->
-    <section id="search-browse">
-        <h2>Explore Existing Projects</h2>
-        <input type="text" id="search-bar" placeholder="Search by genre or keyword..."
-            oninput="searchProjects(this.value)">
-            <div id="projects">
-                {% for project in projects %}
-                <div class="project-card">
-                    <h3>
-                        <a href="{{ url_for('project_details', project_id=project.id) }}" class="project-link">
-                            {{ project.title }}
-                        </a>
-                    </h3>
-                    <p>Genre: {{ project.genre }}</p>
-                    <p>Description: {{ project.description }}</p>
+    <div class="py-16 min-h-screen -mt-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="feature-card">
+                    <div class="feature-inner p-6 rounded-lg">
+                        <div class="h-12 w-12 rounded-lg flex items-center justify-center mb-4"
+                            style="background-color:#FFD460;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="h-6 w-6" style="color: var(--dark-blue);">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2" style="color: var(--dark-blue);">Seamless Communication
+                        </h3>
+                        <p style="color:#2D4059;">
+                            Real-time messaging with read receipts, typing indicators, and rich media sharing.
+                        </p>
+                    </div>
                 </div>
-                {% endfor %}
+
+                <div class="feature-card">
+                    <div class="feature-inner p-6 rounded-lg">
+                        <div class="h-12 w-12 rounded-lg flex items-center justify-center mb-4"
+                            style="background-color:#EA5455;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="h-6 w-6" style="color: black;">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2" style="color: var(--dark-blue);">Secure & Private</h3>
+                        <p style="color: #2D4059;">
+                            End-to-end encryption keeps your conversations private and secure at all times.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-inner p-6 rounded-lg">
+                        <div class="h-12 w-12 rounded-lg flex items-center justify-center mb-4"
+                            style="background-color: #F07B3F;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="h-6 w-6" style="color: black;">
+                                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2" style="color: black;">Fast & Reliable</h3>
+                        <p style="color:#2D4059;">
+                            Lightning fast message delivery with offline support and message syncing.
+                        </p>
+                    </div>
+                </div>
             </div>
-            
-    </section>
-
+        </div>
+    </div>
     <footer>
-        <p>&copy; 2025 Scene Weaver. All rights reserved.</p>
-    </footer>
-
+        <div class="footer-content">
+          <a href="https://facebook.com" class="icon facebook">
+            <i class="fab fa-facebook"></i>
+          </a>
+          <p>&copy; 2025 Chatify. All rights reserved.</p>
+          <a href="https://twitter.com" class="icon twitter">
+            <i class="fab fa-twitter"></i>
+          </a>
+        </div>
+      </footer>
+      
     <script src="{{ url_for('static', filename='script.js') }}"></script>
     <div id="loadingSpinner" class="loading-spinner" style="display: none;">
         <i class="fa-solid fa-spinner"></i>

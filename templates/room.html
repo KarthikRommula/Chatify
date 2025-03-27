@@ -10,8 +10,21 @@
 </head>
 
 <body>
+    
+    <div class="video-container">
+        <video autoplay muted loop>
+            <source src="{{ url_for('static', filename='videoplayback.webm') }}" type="video/mp4">
+        </video>
+    </div>
     <header>
-        <h1 onclick="showLoadingSpinner(); setTimeout(function() { location.reload(); }, 100);">Scene Weaver</h1>
+        <h1 onclick="showLoadingSpinner(); setTimeout(function() { location.reload(); }, 100);" 
+        style="display: flex; align-items: center; gap: 8px;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
+            class="h-8 w-8" style="color: var(--yellow);">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+          </svg>
+          Chatify
+        </h1>
         <nav>
             <!-- Button styled as a Squarespace icon -->
             <a href="{{ url_for('home') }}" onclick="showLoadingSpinner()">
@@ -38,7 +51,7 @@
         <i class="fa-solid fa-spinner"></i>
     </div>
     <footer>
-        <p class="footer">&copy; 2025 Scene Weaver. All rights reserved.</p>
+        <p class="footer">&copy; 2025 Chatify. All rights reserved.</p>
     </footer>
 </body>
 <script>

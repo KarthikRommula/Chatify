@@ -1,12 +1,59 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'poppins', sans-serif;
     height: auto;
-    
-   
+
+
+}
+
+.video-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.video-container video {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    /* Ensures the video fills the screen */
+}
+
+/* Content Styling */
+.content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: white;
+    text-align: center;
+    flex-direction: column;
+}
+
+/* Transparent Button */
+.cta-button {
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+    padding: 12px 24px;
+    font-size: 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+.cta-button:hover {
+    background: rgba(255, 255, 255, 0.2);
 }
 
 /* Navbar Styling */
@@ -15,7 +62,7 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-    background-color: black;
+    background-color: transparent;
     color: #fff;
 }
 
@@ -39,12 +86,22 @@ header nav a:hover {
 #genre-selection {
     padding: 40px;
     text-align: center;
-    background-color: whitesmoke;
+    background-color: transparent;
 }
 
 #genre-selection h2 {
-    font-size: 28px;
+    font-size: 70px;
     margin-bottom: 20px;
+    color: #FFD460;
+    text-align: center;
+}
+
+#genre-selection h3 {
+    font-size: 40px;
+    margin-bottom: 20px;
+    color: black;
+    text-align: center;
+
 }
 
 #genre-selection form {
@@ -59,9 +116,11 @@ header nav a:hover {
     border: 1px solid #ccc;
     outline: none;
     margin-right: 10px;
-    appearance: none;  /* Remove default arrow */
+    appearance: none;
+    /* Remove default arrow */
     background-color: #fff;
-    background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 6"%3E%3Cpath fill="none" stroke="%23333" stroke-width="1.5" d="M1 1l4 4 4-4"%3E%3C/path%3E%3C/svg%3E'); /* Custom arrow */
+    background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 6"%3E%3Cpath fill="none" stroke="%23333" stroke-width="1.5" d="M1 1l4 4 4-4"%3E%3C/path%3E%3C/svg%3E');
+    /* Custom arrow */
     background-repeat: no-repeat;
     background-position: right 10px center;
     background-size: 12px;
@@ -74,7 +133,7 @@ header nav a:hover {
 /* Button Styles for Genre Selection */
 #genre-selection button {
     padding: 10px 20px;
-    background-color: black;
+    background-color: #ff004f;
     color: #fff;
     border: none;
     font-size: 16px;
@@ -86,11 +145,38 @@ header nav a:hover {
     background-color: #ff004f;
 }
 
+/* Feature Section */
+.feature-card {
+    padding: 1.5rem;
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
+}
+
+.feature-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #1E40AF;
+    /* Tailwind text-blue-900 */
+}
+
+.feature-text {
+    color: #374151;
+    /* Tailwind text-gray-700 */
+}
 
 /* Search & Browse Section */
 #search-browse {
     padding: 40px 20px;
-    background-color:white;
+    background-color: transparent;
     text-align: center;
 }
 
@@ -100,7 +186,7 @@ header nav a:hover {
 }
 
 #search-bar {
-    width:100%;
+    width: 100%;
     max-width: 600px;
     padding: 10px;
     font-size: 16px;
@@ -141,6 +227,7 @@ header nav a:hover {
 .project-card p {
     color: #555;
 }
+
 .project-link {
     color: black;
     text-decoration: none;
@@ -150,38 +237,50 @@ header nav a:hover {
 
 /* Footer Styling */
 footer {
-    background-color: black;
+    background-color: transparent;
     color: #fff;
     text-align: center;
     font-size: 14px;
     padding: 10px;
     position: fixed;
     left: 0;
-    bottom: 0; /* Ensure the footer stays at the bottom */
-    width: 100%; /* Make sure the footer spans across the full width */
-    margin-top: 0; /* Remove negative margin */
+    bottom: 0px;
+    /* Ensure the footer stays at the bottom */
+    width: 100%;
+    /* Make sure the footer spans across the full width */
+    margin-top: 0;
+    /* Remove negative margin */
 }
 
 
 .icon-btn {
-    background-color: transparent; /* Button background color */
-    border: none; /* Remove default border */
-    color: white; /* Icon color */
-    font-size: 24px; /* Icon size */
-    cursor: pointer; /* Cursor pointer to indicate interactivity */
+    background-color: transparent;
+    /* Button background color */
+    border: none;
+    /* Remove default border */
+    color: white;
+    /* Icon color */
+    font-size: 20px;
+    /* Icon size */
+    cursor: pointer;
+    /* Cursor pointer to indicate interactivity */
     margin-right: 15px;
-    transition: background-color 0.3s, transform 0.3s; /* Smooth transition */
+    transition: background-color 0.3s, transform 0.3s;
+    /* Smooth transition */
     outline: none;
-  }
-  .icon-btn:last-child {
+}
+
+.icon-btn:last-child {
     margin-right: 0;
-  }
-  .icon-btn:hover {
+}
+
+.icon-btn:hover {
     color: #ff004f;
-    transform: scale(1.1); /* Slight zoom effect */
-  }
- 
-  .loading-spinner {
+    transform: scale(1.1);
+    /* Slight zoom effect */
+}
+
+.loading-spinner {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -191,10 +290,13 @@ footer {
     padding: 10px;
     border-radius: 10px;
     font-size: 18px;
-    display: none; /* Initially hidden */
-    z-index: 9999; /* Ensure it appears above other elements */
+    display: none;
+    /* Initially hidden */
+    z-index: 9999;
+    /* Ensure it appears above other elements */
 }
-@media only screen and (max-width:900px){
+
+@media only screen and (max-width:900px) {
     .project-card {
         background-color: #fefefe;
         border: 1px solid #ddd;
@@ -207,6 +309,7 @@ footer {
         text-align: left;
         margin-bottom: 10px;
     }
+
     #genre-selection button {
         padding: 10px 20px;
         background-color: #ff004f;
@@ -215,23 +318,81 @@ footer {
         font-size: 16px;
         border-radius: 5px;
         cursor: pointer;
-    
+
     }
+
     @media (hover: none) {
         #genre-selection button:hover {
-            background-color: #ff004f; /* Keeps the default state */
+            background-color: #ff004f;
+            /* Keeps the default state */
         }
-    } 
-    .icon-btn{
+    }
+
+    .icon-btn {
         color: #ff004f;
     }
-    button, a, i,header h1{
+
+    button,
+    a,
+    i,
+    header h1 {
         outline: none;
-        -webkit-tap-highlight-color: transparent; /* Specific for mobile devices */
+        -webkit-tap-highlight-color: transparent;
+        /* Specific for mobile devices */
     }
+
     #genre-selection h2 {
-        text-align:justify;
-        font-size:26px;
+        text-align: justify;
+        font-size: 26px;
         margin-left: 7px;
     }
 }
+
+footer {
+    background-color: black; /* Tailwind bg-gray-800 */
+    color: white;
+    padding: 1rem 0;
+    margin-top: 0.5rem;
+  }
+
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+  }
+
+  .footer-icons {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: white;
+    transition: transform 0.3s, background-color 0.3s;
+  }
+
+  .icon:hover {
+    transform: scale(1.1);
+  }
+
+  .google {
+    background-color: #DB4437;
+  }
+  .facebook {
+    background-color: #1877F2;
+  }
+  .twitter {
+    background-color: #1DA1F2;
+  }
+
+  .icon i {
+    font-size: 1.1rem;
+    color: white;
+  }

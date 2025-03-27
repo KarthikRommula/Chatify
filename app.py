@@ -77,7 +77,7 @@ def init_db():
 init_db()
 
 # Sample data
-genres = ["Drama", "Thriller", "Comedy", "Fantasy", "Sci-Fi", "Romance"]
+genres = ["Casual Talk", "Private", "Family & Friends", "Events", "Tech"]
 projects = [
     {"id": 1, "title": "The Storm Within", "genre": "Drama", "description": "An emotional journey through..."},
     {"id": 2, "title": "The Selfie Disaster", "genre": "Comedy", "description": "A humorous take on modern life..."},
@@ -88,8 +88,7 @@ def generate_bot_response(query):
     try:
         # Check for predefined responses
         predefined_responses = {
-            "who are you": "I'm Genius AI, specially trained for Scene Weaver. I improvise text and assist with scriptwriting.",
-            "what is scene weaver": "Scene Weaver is a tool that automates the analysis and synthesis of multiple drafts into a cohesive, polished script. It helps with collaboration and script editing.",
+            "who are you": "I'm CHATIFY ",
             # Add more predefined responses as needed
         }
 
@@ -148,7 +147,7 @@ def project_details(project_id):
     
     if project:
         # Redirect to a dynamic URL based on the project ID
-        return redirect(f"http://192.168.198.75:5000/room/{project_id}")
+        return redirect(f"http://127.0.0.1:5000/room/{project_id}")
     else:
         return "Project not found", 404
 
@@ -245,15 +244,15 @@ def handle_message(data):
     query = None
 
     # If it's a Genius query, generate a response and send it
-    if message.startswith('@genius') or message.startswith('@Genius') or message.startswith('@GENIUS'):
-     query = message[len('@genius'):].strip()  # Adjust this to handle all cases
+    if message.startswith('@chatify') or message.startswith('@Chatify') or message.startswith('@CHATIFY'):
+     query = message[len('@chatify'):].strip()  # Adjust this to handle all cases
 
     if query:  # Only generate response if 'query' is not None or empty
         response = generate_bot_response(query)
         
         # Emit the Genius response after the user's message
         emit('message', {
-            'username': 'Genius',
+            'username': 'chatify',
             'message': response,
             'timestamp': timestamp,
             'room': room_code,
