@@ -12,7 +12,7 @@ A real-time, room-based group chat application built with Flask and WebSockets. 
 - **AI assistant** — mention `@chatify <question>` in a room to get an AI-generated reply from the Groq API (Llama 3 `llama3-8b-8192`). Common phrases use predefined responses.
 - **File sharing** — upload images, PDFs, and documents (up to 100 MB) directly into a room; files are persisted and broadcast to all members.
 - **Persistent chat history** — messages, uploads, and rooms are stored in SQLite, so history is reloaded when a room is reopened.
-- **Room management** — view all active rooms and release (delete) a room along with its messages and uploads.
+- **Room management** — view all active rooms and release (delete) a room along with its messages & uploads.
 
 ## Tech Stack
 
